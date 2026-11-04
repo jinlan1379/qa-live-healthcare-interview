@@ -2,6 +2,7 @@ import { reactive } from 'vue';
 import doctorData from '../data/doctor-user-list.json';
 import patientData from '../data/patient-user.json';
 import questionData from '../data/question-list.json';
+import { doctorApi, type DoctorDTO } from '../api';
 
 export interface Doctor {
   id: string;
@@ -43,6 +44,7 @@ interface State {
   questions: Question[];
   currentDoctor: Doctor | null;
   currentPatient: Patient | null;
+  doctorsLoadedFromApi: boolean;
 }
 
 const state = reactive<State>({
@@ -51,10 +53,37 @@ const state = reactive<State>({
   questions: questionData as Question[],
   currentDoctor: null,
   currentPatient: null,
+  doctorsLoadedFromApi: false,
 });
+
+function mapDtoToDoctor(dto: DoctorDTO): Doctor {
+  return {
+    id: `doc${dto.id.toString().padStart(3, '0')}`,
+    username: dto.username,
+    password: '',
+    name: dto.name,
+    title: dto.title,
+    department: dto.department,
+    avatar: dto.avatar,
+    experience: dto.experience,
+    specialties: dto.specialties,
+    isActive: dto.isActive,
+  };
+}
 
 export const store = {
   state,
+
+  async fetchDoctorsFromApi(): Promise<void> {
+    try {
+      const response = await doctorApi.getAll();
+      state.doctors = response.data.map(mapDtoToDoctor);
+      state.doctorsLoadedFromApi = true;
+    } catch {
+      // fallback to local JSON data
+      console.warn('Failed to fetch doctors from API, using local data');
+    }
+  },
 
   loginDoctor(username: string, password: string): Doctor | null {
     const doctor = state.doctors.find(
@@ -63,6 +92,21 @@ export const store = {
     if (doctor) {
       state.currentDoctor = doctor;
       return doctor;
+    }
+    return null;
+  },
+
+  async loginDoctorApi(username: string, password: string): Promise<Doctor | null> {
+    try {
+      const response = await doctorApi.login(username, password);
+      if (response.data.success && response.data.user) {
+        const doctor = mapDtoToDoctor(response.data.user);
+        state.currentDoctor = doctor;
+        return doctor;
+      }
+    } catch {
+      // fallback to local login
+      return this.loginDoctor(username, password);
     }
     return null;
   },

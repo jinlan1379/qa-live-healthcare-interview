@@ -1,8 +1,8 @@
 <template>
   <div class="doctors-page">
     <div class="page-header">
-      <h1>医生团队</h1>
-      <p>我们的专业医疗团队随时为您服务</p>
+      <h1>{{ $t('doctors.title') }}</h1>
+      <p>{{ $t('doctors.subtitle') }}</p>
     </div>
 
     <div class="doctors-container">
@@ -17,7 +17,7 @@
             <img :src="doctor.avatar" :alt="doctor.name" class="doctor-avatar" />
             <a-badge
               :status="doctor.isActive ? 'processing' : 'default'"
-              :text="doctor.isActive ? '在线' : '离线'"
+              :text="doctor.isActive ? $t('doctors.online') : $t('doctors.offline')"
             />
           </div>
           <div class="card-body">
@@ -38,7 +38,7 @@
               :disabled="!doctor.isActive"
               @click="goToConsultation(doctor)"
             >
-              {{ doctor.isActive ? '进入诊室' : '暂未开放' }}
+              {{ doctor.isActive ? $t('doctors.enterRoom') : $t('doctors.notOpen') }}
             </a-button>
           </div>
         </a-card>
