@@ -36,6 +36,10 @@
             </a-menu>
           </template>
         </a-dropdown>
+        <a-button type="primary" @click="navigateTo('/patient/login')">
+          <UserOutlined />
+          {{ $t('nav.patientLogin') }}
+        </a-button>
         <a-button type="primary" class="login-btn" @click="navigateTo('/doctor/login')">
           <UserOutlined />
           {{ $t('nav.doctorLogin') }}

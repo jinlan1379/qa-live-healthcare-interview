@@ -158,6 +158,32 @@
     "disclaimer": "医疗免责声明",
     "copyright": "2025 QA Live Healthcare. All rights reserved."
   },
+  "patientLogin": {
+    "title": "患者登录",
+    "subtitle": "请使用您的账号登录系统",
+    "registerTitle": "患者注册",
+    "registerSubtitle": "创建新账户以使用问诊服务",
+    "username": "用户名",
+    "usernamePlaceholder": "请输入用户名",
+    "name": "姓名",
+    "namePlaceholder": "请输入您的真实姓名",
+    "password": "密码",
+    "passwordPlaceholder": "请输入密码",
+    "login": "登录",
+    "register": "注册",
+    "noAccount": "还没有账户?",
+    "goRegister": "立即注册",
+    "hasAccount": "已有账户?",
+    "goLogin": "返回登录",
+    "testAccountTip": "测试账号提示",
+    "testAccountDesc": "用户名: patient001, 密码: 123456",
+    "usernameRequired": "请输入用户名",
+    "passwordRequired": "请输入密码",
+    "nameRequired": "请输入姓名",
+    "loginSuccess": "登录成功",
+    "loginFailed": "用户名或密码错误",
+    "registerSuccess": "注册成功"
+  },
   "lang": {
     "zh": "中文",
     "en": "English"

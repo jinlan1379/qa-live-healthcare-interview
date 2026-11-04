@@ -158,6 +158,32 @@
     "disclaimer": "Medical Disclaimer",
     "copyright": "2025 QA Live Healthcare. All rights reserved."
   },
+  "patientLogin": {
+    "title": "Patient Login",
+    "subtitle": "Please log in with your account",
+    "registerTitle": "Patient Registration",
+    "registerSubtitle": "Create a new account to use consultation services",
+    "username": "Username",
+    "usernamePlaceholder": "Please enter username",
+    "name": "Name",
+    "namePlaceholder": "Please enter your real name",
+    "password": "Password",
+    "passwordPlaceholder": "Please enter password",
+    "login": "Login",
+    "register": "Register",
+    "noAccount": "Don't have an account?",
+    "goRegister": "Register now",
+    "hasAccount": "Already have an account?",
+    "goLogin": "Back to login",
+    "testAccountTip": "Test Account Info",
+    "testAccountDesc": "Username: patient001, Password: 123456",
+    "usernameRequired": "Please enter username",
+    "passwordRequired": "Please enter password",
+    "nameRequired": "Please enter your name",
+    "loginSuccess": "Login successful",
+    "loginFailed": "Invalid username or password",
+    "registerSuccess": "Registration successful"
+  },
   "lang": {
     "zh": "中文",
     "en": "English"
