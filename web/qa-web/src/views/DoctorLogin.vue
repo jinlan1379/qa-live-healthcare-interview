@@ -78,19 +78,19 @@ const rules = computed(() => ({
 
 const onFinish = async () => {
   loading.value = true;
-
-  setTimeout(() => {
-    const doctor = store.loginDoctor(formState.username, formState.password);
-
+  try {
+    const doctor = await store.loginDoctorApi(formState.username, formState.password);
     if (doctor) {
       message.success(t('doctorLogin.loginSuccess'));
       router.push(`/doctor/room/${doctor.username}`);
     } else {
       message.error(t('doctorLogin.loginFailed'));
     }
-
+  } catch {
+    message.error(t('doctorLogin.loginFailed'));
+  } finally {
     loading.value = false;
-  }, 500);
+  }
 };
 </script>
 
